@@ -6,10 +6,8 @@ if [ -z "$1" ] ;then
 else
     _commit=$1
 fi
-echo git add .
-git add .
 
-echo git commit -m "\"$_commit\""
+git add .
 git commit -m "\"$_commit\""
 
 if [ -z "$2" ] ;then
