@@ -13,5 +13,5 @@ git commit -m "\"$_commit\""
 if [ -z "$2" ] ;then
     git push
 else
-    git push "$2"
+    git push $2
 fi
