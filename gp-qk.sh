@@ -8,7 +8,7 @@ else
 fi
 
 git add .
-git commit -m "\"$_commit\""
+git commit -m "$_commit"
 
 if [ -z "$2" ] ;then
     git push
