@@ -34,7 +34,7 @@ git clone https://github.com/moyuyc/moka-theme-toy.git themes/toy
 echo `curl -s https://moyuyc.github.io/moka_api/moka.config.json` > moka.config.json
 
 moka generate
-set URL=http://localhost:9876
+URL=http://localhost:9876
 if ! command_exists open; then
     start $URL
 else
