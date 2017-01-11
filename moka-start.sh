@@ -20,11 +20,6 @@ command_exists_exit() {
 # command check
 command_exists_exit npm
 command_exists_exit git
-if ! command_exists open; then
-    # windows start command
-    echo open=start
-    alias open=start
-fi
 
 
 # npm uninstall -g moka-cli
@@ -38,7 +33,12 @@ moka init
 git clone https://github.com/moyuyc/moka-theme-toy.git themes/toy
 echo `curl -s https://moyuyc.github.io/moka_api/moka.config.json` > moka.config.json
 
-
 moka generate
-open http://localhost:9876
+set URL=http://localhost:9876
+if ! command_exists open; then
+    start $URL
+else
+    open $URL    
+fi
+
 moka staticServer -p 9876 #backgroud job
