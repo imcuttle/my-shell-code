@@ -22,8 +22,8 @@ command_exists_exit npm
 command_exists_exit git
 if ! command_exists open; then
     # windows start command
-    echo open='start'
-    alias open='start'
+    echo open=start
+    alias open=start
 fi
 
 
