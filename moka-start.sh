@@ -27,7 +27,7 @@ if ! command_exists open; then
 fi
 
 
-npm uninstall -g moka-cli
+# npm uninstall -g moka-cli
 npm --registry=https://registry.npm.taobao.org install moka-cli -g
 
 mkdir moka-blog
