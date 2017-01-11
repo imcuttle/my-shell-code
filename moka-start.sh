@@ -1,6 +1,8 @@
 #!/bin/bash  
 
-# curl https://raw.githubusercontent.com/moyuyc/my-shell-code/master/moka-start.sh | bash /dev/stdin
+# curl -s https://raw.githubusercontent.com/moyuyc/my-shell-code/master/moka-start.sh | bash 
+# /dev/stdin
+
 # some functions begin
 echoerr() { echo "$@" 1>&2; }
 
@@ -20,6 +22,7 @@ command_exists_exit npm
 command_exists_exit git
 if ! command_exists open; then
     # windows start command
+    echo open='start'
     alias open='start'
 fi
 
@@ -33,7 +36,7 @@ cd moka-blog
 moka init
 
 git clone https://github.com/moyuyc/moka-theme-toy.git themes/toy
-echo `curl https://moyuyc.github.io/moka_api/moka.config.json` > moka.config.json
+echo `curl -s https://moyuyc.github.io/moka_api/moka.config.json` > moka.config.json
 
 
 moka generate
