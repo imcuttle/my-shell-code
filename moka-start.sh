@@ -1,5 +1,6 @@
 #!/bin/bash  
 
+# curl https://raw.githubusercontent.com/moyuyc/my-shell-code/master/moka-start.sh | bash /dev/stdin
 # some functions begin
 echoerr() { echo "$@" 1>&2; }
 
