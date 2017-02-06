@@ -2,7 +2,15 @@
 
 LOCKFILE="/tmp/safe-rm-timer.lock"
 DELDIR="/.Trashes"
-[ -f $LOCKFILE ] && echo "Already running $(basename $0)" >&2 && exit
+
+
+if [ -f $LOCKFILE ]; then
+    echo "Already exists file $LOCKFILE" >&2
+
+    PID=`cat $LOCKFILE`
+    [ -n "$(ps -p $PID -o pid=)" ] && exit
+fi
+
 
 do_for_sigint() {
     rm $LOCKFILE
@@ -10,7 +18,6 @@ do_for_sigint() {
 }
 
 trap "do_for_sigint" INT
-
 echo $$ > $LOCKFILE
 secs=$[60*10]
 # endTime=$(( $(date +%s) + secs ))
