@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DELDIR="/.Trashes"
+DELDIR="$HOME/.Trash"
 [ ! -d $DELDIR ] && mkdir $DELDIR
 
 mv -vi $@ $DELDIR
