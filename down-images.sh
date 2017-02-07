@@ -15,16 +15,18 @@ TMP=${DATE:4}
 BASE_URL="http://xoimg.com/upload/image/"$DATE/$TMP"00"
 
 down() {
-    URL=$1
-    Name=$2
-    data=`curl --fail --silent $URL` 
+    local URL=$1
+    local Name=$2
+    local data=`curl --fail --silent $URL` 
     # "$data" 不能少  因为data中可能包含[]
     if [ ! -z "$data" ]; then
         curl --fail --silent $URL > $Name
         # echo $data>$Name
         echo "DOWNLOADED! $URL"
+        return 0 # true
     else
         echo "NOT FOUND! $URL"
+        return 1 # false
     fi
 }
 
@@ -37,11 +39,26 @@ mkdir_check $DIR
 
 i=0
 [ -n "$1" ] && i=$1
+exts=(".jpg" ".png" ".gif")
 
 while [ "$i" -le 99999 ]; do
     INNERDIR="$DIR/$DATE"
     mkdir_check $INNERDIR
-    FILENAME="$(printf %05d $i).jpg"
-    [ ! -f "$FILENAME" ] && down "$BASE_URL$FILENAME" "$INNERDIR/$FILENAME" || echo "EXISTED! $URL"
+
+
+
+    for ext in ${exts[@]}; do
+        FILENAME="$(printf %05d $i)$ext"
+        
+        if [ ! -f "$INNERDIR/$FILENAME" ]; then
+            if down "$BASE_URL$FILENAME" "$INNERDIR/$FILENAME" ; then
+                break;
+            fi
+        else
+            echo "EXISTED! $INNERDIR/$FILENAME"
+            break;
+        fi
+    done
+    
     i=$[i+1];
 done
