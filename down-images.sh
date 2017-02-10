@@ -3,6 +3,8 @@
 # Usage: ./down-image.sh <begin_id> <date>
 # eg. ./down-image.sh 54910 20170205
 # result: save images to directory ./images.
+# 
+# curl https://raw.githubusercontent.com/moyuyc/my-shell-code/master/down-images.sh > down-image.sh && sh down-image.sh 54910 20170205
 
 DATE=$(date +%Y%m%d)
 [ -n "$2" ] && DATE=$2
@@ -20,7 +22,7 @@ down() {
     local data=`curl --fail --silent $URL` 
     # "$data" 不能少  因为data中可能包含[]
     if [ ! -z "$data" ]; then
-        curl --fail --silent $URL > $Name
+        curl --fail --silent $URL -o $Name
         # echo $data>$Name
         echo "DOWNLOADED! $URL"
         return 0 # true
