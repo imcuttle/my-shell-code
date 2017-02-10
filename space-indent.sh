@@ -1,5 +1,7 @@
 #!/bin/sh
 # scriptname [...files] [from space number] [to space number]
+# bug:
+#    only match first indent of each line.
 
 
 is_number() {
