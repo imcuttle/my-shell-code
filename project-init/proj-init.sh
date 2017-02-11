@@ -5,3 +5,7 @@ DIR_PATH="$(dirname "$SELF_PATH")"
 
 sh "$DIR_PATH/copy-license.sh"
 cp -v "$DIR_PATH/.gitignore" .
+
+BASE_NAME=$(basename $PWD)
+[ ! -f "Readme.md" ] && echo "# $BASE_NAME" > Readme.md
+
