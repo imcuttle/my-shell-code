@@ -10,7 +10,11 @@ is_directory()
   fi
 }
 
-_PATH="/Users/moyu/my-code/ShellCode/react-component"
+SELF_PATH="$(cd -P -- "$(dirname -- "$0")" && pwd -P)/$(basename -- "$0")"
+SELF_PATH="$(readlink "$SELF_PATH" || echo $SELF_PATH)"
+DIR_PATH="$(dirname "$SELF_PATH")"
+
+_PATH=$DIR_PATH
 # echo $PATH
 # echo 
 
