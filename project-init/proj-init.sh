@@ -13,3 +13,8 @@ cp -v "$DIR_PATH/.gitignore" .
 BASE_NAME=$(basename $PWD)
 [ ! -f "Readme.md" ] && echo "# $BASE_NAME" > Readme.md
 
+if [ ! -f "package.json" ]; then
+    npm init -y
+    sed -i '' -e "s/ISC/MIT/" package.json
+fi
+
