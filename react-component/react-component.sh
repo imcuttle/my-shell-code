@@ -32,6 +32,6 @@ else
 
     cd "$NAME"
     echo $CONTENT>index.js
-    cp "$_PATH"/style.less style.less
+    cp "$_PATH"/style.scss style.scss
     echo $CONTENT
 fi
