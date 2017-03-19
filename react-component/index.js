@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from 'react';
-import shallowequal from 'shallowequal';
+import {Map} from 'immutable';
 import autobind from 'autobind-decorator';
 import css from './style.scss';
 
@@ -12,7 +12,7 @@ class _Component_ extends Component {
     componentDidMount() {}
     componentWillReceiveProps(newProps) {}
     shouldComponentUpdate(newProps, newState, newContext) {
-      return !shallowequal(this.props, newProps);
+        return !Map(this.props).equals(Map(newProps));
     }
     componentWillUpdate(newProps, newState, newContext) {}
     componentDidUpdate(oldProps, oldState, oldContext) {}
