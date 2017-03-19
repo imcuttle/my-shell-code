@@ -30,7 +30,7 @@ else
         mkdir "$NAME"
         cd "$NAME"
         echo $CONTENT>index.js
-        cp "$_PATH"/style.scss style.scss
+        cp "$_PATH"/style.js style.js
         echo $CONTENT
     else
         echo "already exists directory $NAME." >&2

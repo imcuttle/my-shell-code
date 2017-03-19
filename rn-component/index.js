@@ -1,7 +1,20 @@
-import React, {PropTypes, Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import shallowequal from 'shallowequal';
 import autobind from 'autobind-decorator';
-import css from './style.scss';
+import {
+    Text,
+    View,
+    TouchableHighlight,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    StyleSheet,
+    ListView,
+    ScrollView,
+    Button
+} from 'react-native';
+
+import sty from './style';
+
 
 @autobind
 class _Component_ extends Component {
@@ -21,11 +34,13 @@ class _Component_ extends Component {
     state = {}
     static propTypes = {}
     render() {
-      const {...props} = this.props
+        const {...props} = this.props
 
-      return (
-          <div className={css.main}></div>
-      )
+        return (
+            <View style={sty.main}>
+                <Text>_Component_</Text>
+            </View>
+        )
     }
 }
 
