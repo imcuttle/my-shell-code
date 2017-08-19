@@ -1,6 +1,6 @@
 #!/bin/bash  
 
-# curl -s https://raw.githubusercontent.com/moyuyc/my-shell-code/master/moka-start.sh | bash 
+# curl -s https://raw.githubusercontent.com/imcuttle/my-shell-code/master/moka-start.sh | bash 
 # /dev/stdin
 
 # some functions begin
@@ -30,8 +30,8 @@ cd moka-blog
 
 moka init
 
-git clone https://github.com/moyuyc/moka-theme-toy.git themes/toy
-echo `curl -s https://moyuyc.github.io/moka_api/moka.config.json` > moka.config.json
+git clone https://github.com/imcuttle/moka-theme-toy.git themes/toy
+echo `curl -s https://imcuttle.github.io/moka_api/moka.config.json` > moka.config.json
 
 moka generate
 URL=http://localhost:9876
