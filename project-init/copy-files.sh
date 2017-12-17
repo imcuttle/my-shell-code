@@ -10,3 +10,9 @@ run () {
 }
 
 run cp "$DIR_PATH/License" .
+run cp "$DIR_PATH/.gitignore" .
+run cp "$DIR_PATH/.travis.yml" .
+run cp "$DIR_PATH/.editorconfig" .
+run cp "$DIR_PATH/.eslintignore" .
+run cp "$DIR_PATH/.eslintrc" .
+run cp "$DIR_PATH/.babelrc" .

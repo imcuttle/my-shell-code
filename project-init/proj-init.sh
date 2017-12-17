@@ -5,16 +5,26 @@ DIR_PATH="$(dirname "$SELF_PATH")"
 
 dir="."
 [ -n "$1" ] && dir="$1"
-[ ! -d "$dir" ] && mkdir "$dir"
+[ ! -d "$dir" ] && mkdir -p "$dir"
 cd $dir
-sh "$DIR_PATH/copy-license.sh"
-cp -v "$DIR_PATH/.gitignore" .
+
+sh "$DIR_PATH/copy-files.sh"
 
 BASE_NAME=$(basename $PWD)
-[ ! -f "Readme.md" ] && echo "# $BASE_NAME" > Readme.md
+[ ! -f "Readme.md" ] && {
+    echo "# $BASE_NAME"
+    echo "[![build status](https://img.shields.io/travis/imcuttle/$BASE_NAME/master.svg?style=flat-square)](https://travis-ci.org/imcuttle/$BASE_NAME)"
+    echo "[![Test coverage](https://img.shields.io/codecov/c/github/imcuttle/$BASE_NAME.svg?style=flat-square)](https://codecov.io/github/imcuttle/$BASE_NAME?branch=master)"
+    echo "[![NPM version](https://img.shields.io/npm/v/$BASE_NAME.svg?style=flat-square)](https://www.npmjs.com/package/$BASE_NAME)"
+    echo "[![NPM Downloads](https://img.shields.io/npm/dm/$BASE_NAME.svg?style=flat-square&maxAge=43200)](https://www.npmjs.com/package/$BASE_NAME)"
+} > Readme.md
 
 if [ ! -f "package.json" ]; then
     npm init -y
     sed -i '' -e "s/ISC/MIT/" package.json
+    sed -i '' -e "s/\"keywords\": \[\]/\"keywords\": [\"imcuttle\", \"$BASE_NAME\"]/" package.json
+#    sed -i '' -e "s/ && exit 1//" package.json
 fi
 
+mkdir test
+git init
