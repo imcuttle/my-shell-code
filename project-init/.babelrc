@@ -6,14 +6,14 @@
       "env",
       {
         "targets": {
-          "node": "5.10",
-          "browsers": ["last 2 versions"]
+          "node": "6",
+          "browsers": ["ie>=9"]
         },
         "loose": true,
         "useBuiltIns": true
       }
     ],
-    "react"
+    // "react"
   ],
   "plugins": [
     "transform-decorators-legacy",
