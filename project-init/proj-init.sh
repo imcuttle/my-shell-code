@@ -11,6 +11,14 @@ cd $dir
 sh "$DIR_PATH/copy-files.sh"
 
 BASE_NAME=$(basename $PWD)
+
+if [ ! -f "package.json" ]; then
+    npm init -y
+    sed -i '' -e "s/ISC/MIT/" package.json
+    sed -i '' -e "s/\"keywords\": \[\]/\"keywords\": [\"imcuttle\", \"$BASE_NAME\"]/" package.json
+    sed -i '' -e "s/\"author\": \"\"/\"author\": \"imcuttle\"/" package.json
+fi
+
 [ ! -f "Readme.md" ] && {
     echo "# $BASE_NAME"
     echo "[![build status](https://img.shields.io/travis/imcuttle/$BASE_NAME/master.svg?style=flat-square)](https://travis-ci.org/imcuttle/$BASE_NAME)"
@@ -18,13 +26,6 @@ BASE_NAME=$(basename $PWD)
     echo "[![NPM version](https://img.shields.io/npm/v/$BASE_NAME.svg?style=flat-square)](https://www.npmjs.com/package/$BASE_NAME)"
     echo "[![NPM Downloads](https://img.shields.io/npm/dm/$BASE_NAME.svg?style=flat-square&maxAge=43200)](https://www.npmjs.com/package/$BASE_NAME)"
 } > Readme.md
-
-if [ ! -f "package.json" ]; then
-    npm init -y
-    sed -i '' -e "s/ISC/MIT/" package.json
-    sed -i '' -e "s/\"keywords\": \[\]/\"keywords\": [\"imcuttle\", \"$BASE_NAME\"]/" package.json
-#    sed -i '' -e "s/ && exit 1//" package.json
-fi
 
 mkdir test
 git init
