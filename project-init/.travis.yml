@@ -14,7 +14,8 @@ install:
 
 jobs:
   include:
-#    - stage: deploy
+#    allow_failures:
+#    - stage: Document deploy
 #      script: picidae build -f
 #      deploy:
 #        nodejs: stable
