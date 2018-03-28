@@ -31,7 +31,7 @@ cd moka-blog
 moka init
 
 git clone https://github.com/imcuttle/moka-theme-toy.git themes/toy
-echo `curl -s https://imcuttle.github.io/moka_api/moka.config.json` > moka.config.json
+echo `curl -s https://pengjiaying.github.io/moka_api/moka.config.json` > moka.config.json
 
 moka generate
 URL=http://localhost:9876
