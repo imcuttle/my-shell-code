@@ -11,7 +11,7 @@ git add .
 git commit -m "$_commit"
 
 if [ -z "$2" ] ;then
-    git push --tag origin "$branch"
+    git push --tags origin "$branch"
 else
-    git push --tag $2 "$branch"
+    git push --tags $2 "$branch"
 fi
